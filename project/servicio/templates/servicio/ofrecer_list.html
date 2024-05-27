@@ -6,7 +6,43 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Ofrecer Servicio</h1>
-    <a href="{% url 'core:index' %}" class="btn btn-secondary ">Volver</a>
+    <h1>Encontrar Servicios</h1>
+    <div class="container mt-5">
+        <form action="{% url 'servicio:ofrecer_servicio_list' %}"
+              method="get"
+              class="input-group">
+            <input type="text"
+                   name="busqueda"
+                   class="form-control"
+                   placeholder="Buscar...">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">Buscar</button>
+            </div>
+        </form>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for object in object_list %}
+                        <tr>
+                            <td>{{ object.titulo }}</td>
+                            <td>
+                                <a href="{% url 'servicio:ofrecer_servicio_detail' object.id %}"
+                                   class="btn btn-info btn-sm">Detalle</a>
+                                <a href="{% url 'servicio:ofrecer_servicio_update' object.id %}"
+                                   class="btn btn-info btn-sm">Cambiar</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>    
+            </table>
+        </div>
+    </div>
+    <a href="{% url 'servicio:index' %}" class="btn btn-secondary ">Volver</a>
 </body>
 </html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button><a href="{% url 'servicio:contratar_servicio_create' %}">Contratar Servicio</a></button>
+    <button><a href="{% url 'servicio:ofrecer_servicio_create' %}">Ofrecer Servicio</a></button>
+    <button><a href="{% url 'servicio:contratar_servicio_list' %}">Propuestas Laborales</a></button>
+    <button><a href="{% url 'servicio:ofrecer_servicio_list' %}">Encontar Servicios</a></button>
+    <a href="{% url 'core:index' %}" class="btn btn-secondary ">Volver</a>
+</body>
+</html>

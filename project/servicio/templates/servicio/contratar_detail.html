@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>Titulo: {{ object.titulo }}</li>
+        <li>Descripción: {{ object.descripcion }}</li>
+        <li>Presupuesto Maximo: {{ object.presupuesto_maximo}}</li>
+        <li>Fecha de Solicitud: {{ object.fecha_solicitud }}</li>
+        <li>Fecha Limite: {{ object.fecha_limite }}</li>
+    </ul>
+    <div>
+        <a href="{% url 'servicio:contratar_servicio_list' %}">Volver</a>
+    </div>
+</body>
+</html>

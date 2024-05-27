@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if form.instance.pk %}
+        <h1>Editar Trabajo</h1>
+    {% else %}
+        <h1>Contratar Servicio</h1>
+    {% endif %}
+    <table>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_table }}
+            <button type="submit">Enviar</button>
+        </form>
+    </table>
+    <a href="{% url 'servicio:index' %}" class="btn btn-secondary ">Volver</a>
+</body>
+</html>
