@@ -10,7 +10,7 @@ class Servicio(models.Model):
         return self.nombre
 
 
-class ServicioOfrecido(Servicio, models.Model):
+class OfrecerServicio(Servicio, models.Model):
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         super().__init__(*args, **kwargs)
 
@@ -20,7 +20,7 @@ class ServicioOfrecido(Servicio, models.Model):
     fecha_publicacion = models.DateField(auto_now_add=True)
 
 
-class ServicioContratado(Servicio, models.Model):
+class ContratarServicio(Servicio, models.Model):
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         super().__init__(*args, **kwargs)
 

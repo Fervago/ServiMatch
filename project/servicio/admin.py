@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import ServicioContratado, ServicioOfrecido
+from .models import OfrecerServicio, ContratarServicio
 
-admin.site.register(ServicioContratado)
-admin.site.register(ServicioOfrecido)
+admin.site.register(ContratarServicio)
+admin.site.register(OfrecerServicio)
