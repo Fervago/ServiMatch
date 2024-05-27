@@ -36,6 +36,8 @@
                                    class="btn btn-info btn-sm">Detalle</a>
                                 <a href="{% url 'servicio:contratar_servicio_update' object.id %}"
                                    class="btn btn-info btn-sm">Cambiar</a>
+                                <a href="{% url 'servicio:contratar_servicio_delete' object.id %}"
+                                   class="btn btn-info btn-sm">Eliminar</a>
                             </td>
                         </tr>
                     {% endfor %}

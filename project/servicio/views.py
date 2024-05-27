@@ -12,6 +12,10 @@ from django.views.generic import (
 from .models import OfrecerServicio, ContratarServicio
 from .forms import OfrecerServicioForm, ContratarServicioForm
 
+
+
+# ***** OFRECER Servicio
+
 def index(request):
     return render(request, "servicio/index.html")
 
@@ -39,8 +43,12 @@ class OfrecerServicioUpdate(UpdateView):
 
 class OfrecerServicioDelete(DeleteView):
     model = OfrecerServicio
-    success_url = reverse_lazy('servicio/')
+    template_name = "servicio/ofrecer_delete.html"
+    success_url = reverse_lazy('servicio:ofrecer_servicio_list')
 
+
+
+# ***** CONTRATAR Servicio
 
 class ContratarServicioList(ListView):
     model = ContratarServicio
@@ -67,4 +75,5 @@ class ContratarServicioUpdate(UpdateView):
 
 class ContratarServicioDelete(DeleteView):
     model = ContratarServicio
-    success_url = reverse_lazy('servicio/')
+    template_name = "servicio/contratar_delete.html"
+    success_url = reverse_lazy('servicio:contratar_servicio_list')

@@ -18,6 +18,10 @@
             <button type="submit">Enviar</button>
         </form>
     </table>
-    <a href="{% url 'servicio:index' %}" class="btn btn-secondary ">Volver</a>
+    {% if form.instance.pk %}
+        <a href="{% url 'servicio:contratar_servicio_list' %}" class="btn btn-secondary ">Volver</a>
+    {% else %}
+        <a href="{% url 'servicio:index' %}" class="btn btn-secondary ">Volver</a>
+    {% endif %}
 </body>
 </html>
