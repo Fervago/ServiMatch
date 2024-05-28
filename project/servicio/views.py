@@ -1,6 +1,9 @@
+from typing import Any
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Q
+from django.db.models.query import QuerySet
 from django.shortcuts import render
 from django.urls import reverse_lazy
-
 from django.views.generic import (
     CreateView,
     DeleteView,
@@ -8,7 +11,6 @@ from django.views.generic import (
     ListView,
     UpdateView,
 )
-
 from .models import OfrecerServicio, ContratarServicio
 from .forms import OfrecerServicioForm, ContratarServicioForm
 
@@ -22,6 +24,15 @@ def index(request):
 class OfrecerServicioList(ListView):
     model = OfrecerServicio
     template_name = "servicio/ofrecer_list.html"
+
+    def get_queryset(self) -> QuerySet[Any]:
+        queryset = super().get_queryset()
+        busqueda = self.request.GET.get("busqueda")
+        if busqueda:
+            queryset = OfrecerServicio.objects.filter(
+                Q(titulo__icontains=busqueda) 
+            )
+        return queryset
 
 class OfrecerServicioDetail(DetailView):
     model = OfrecerServicio
@@ -54,6 +65,14 @@ class ContratarServicioList(ListView):
     model = ContratarServicio
     template_name = "servicio/contratar_list.html"
 
+    def get_queryset(self) -> QuerySet[Any]:
+        queryset = super().get_queryset()
+        busqueda = self.request.GET.get("busqueda")
+        if busqueda:
+            queryset = ContratarServicio.objects.filter(
+                Q(titulo__icontains=busqueda) 
+            )
+        return queryset
 
 class ContratarServicioDetail(DetailView):
     model = ContratarServicio
