@@ -54,7 +54,7 @@ class OfrecerServicioUpdate(LoginRequiredMixin, UpdateView):
 
     def dispatch(self, request, *args, **kwargs):
         obj = self.get_object()
-        if not obj.usuario == request.user:
+        if not obj.usuario == request.user: # type: ignore
             messages.error(request, "No tienes permiso para editar este servicio.")
             return redirect('servicio:ofrecer_servicio_detail', pk=obj.pk)
         return super().dispatch(request, *args, **kwargs)
@@ -67,7 +67,7 @@ class OfrecerServicioDelete(LoginRequiredMixin, DeleteView):
 
     def dispatch(self, request, *args, **kwargs):
         obj = self.get_object()
-        if not obj.usuario == request.user:
+        if not obj.usuario == request.user: # type: ignore 
             messages.error(request, "No tienes permiso para editar este servicio.")
             return redirect('servicio:ofrecer_servicio_detail', pk=obj.pk)
         return super().dispatch(request, *args, **kwargs)
@@ -107,7 +107,7 @@ class ContratarServicioUpdate(LoginRequiredMixin, UpdateView):
 
     def dispatch(self, request, *args, **kwargs):
         obj = self.get_object()
-        if not obj.usuario == request.user:
+        if not obj.usuario == request.user: # type: ignore
             messages.error(request, "No tienes permiso para editar este servicio.")
             return redirect('servicio:contratar_servicio_detail', pk=obj.pk)
         return super().dispatch(request, *args, **kwargs)
@@ -119,7 +119,7 @@ class ContratarServicioDelete(LoginRequiredMixin, DeleteView):
 
     def dispatch(self, request, *args, **kwargs):
         obj = self.get_object()
-        if not obj.usuario == request.user:
+        if not obj.usuario == request.user: # type: ignore
             messages.error(request, "No tienes permiso para editar este servicio.")
             return redirect('servicio:contratar_servicio_detail', pk=obj.pk)
         return super().dispatch(request, *args, **kwargs)
