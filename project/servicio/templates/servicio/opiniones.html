@@ -1,0 +1,33 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div style="overflow-y: auto; overflow-x: hidden; max-height: 80vh;">
+    <div class="mt-5">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-6" style="margin-top: 90px;">
+                {% if object_list %}
+                    {% for object in object_list %}
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Usuario: {{ object.usuario }}</h5>
+                                <ul class="list-group">
+                                    <li class="list-group-item">Comentario: {{ object.comentario }}</li>
+                                    <li class="list-group-item">Calificación: {{ object.calificacion }}</li>
+                                    <p>Fecha de Publicación: {{ object.fecha_publicacion }}</p>
+                                </ul>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p class="fs-5 fst-italic text-center" >No hay comentarios</p>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row justify-content-center mt-3">
+            <div class="col-md-6 text-center">
+                <a href="{% url 'servicio:ofrecer_servicio_list' %}" class="btn btn-secondary" >Volver a Econtrar Servicio</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

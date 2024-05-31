@@ -21,3 +21,14 @@ class ContratarServicioForm(forms.ModelForm):
             'descripcion': forms.Textarea(attrs={'style': 'width: 300px; height: 80px;'}),
             'fecha_limite': forms.DateInput(attrs={'type': 'date'}),
             }
+        
+
+class OpinionForm(forms.ModelForm):
+    class Meta:
+        model = models.Opinion
+        fields = "__all__"
+        widgets = {
+            'comentario': forms.Textarea(attrs={'style': 'width: 300px; height: 80px;'}),
+            'fecha_publicacion': forms.DateInput(attrs={'type': 'date'}),
+            }
+        

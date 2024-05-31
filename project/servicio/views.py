@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.db.models.query import QuerySet
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import (
     CreateView,
@@ -12,8 +12,8 @@ from django.views.generic import (
     ListView,
     UpdateView,
 )
-from .models import OfrecerServicio, ContratarServicio
-from .forms import OfrecerServicioForm, ContratarServicioForm
+from .models import OfrecerServicio, ContratarServicio, Opinion
+from .forms import OfrecerServicioForm, ContratarServicioForm, OpinionForm
 
 
 
@@ -123,3 +123,22 @@ class ContratarServicioDelete(LoginRequiredMixin, DeleteView):
             messages.error(request, "No tienes permiso para editar este servicio.")
             return redirect('servicio:contratar_servicio_detail', pk=obj.pk)
         return super().dispatch(request, *args, **kwargs)
+    
+
+class OpinionServicioList(LoginRequiredMixin, ListView):
+    model = Opinion
+    template_name = "servicio/opiniones.html"
+
+    def get_queryset(self):
+        servicio_pk = self.kwargs.get('pk')
+        servicio = get_object_or_404(OfrecerServicio, pk=servicio_pk)
+        queryset = Opinion.objects.filter(servicio=servicio)
+        return queryset
+        
+
+
+class OpinionServicioCreate(LoginRequiredMixin, CreateView):
+    model = Opinion
+    form_class = OpinionForm
+    template_name = "servicio/opinion_create.html"
+    success_url = reverse_lazy('servicio:ofrecer_servicio_list')

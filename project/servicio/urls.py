@@ -10,6 +10,8 @@ from .views import (OfrecerServicioList,
                     ContratarServicioCreate,
                     ContratarServicioUpdate,
                     ContratarServicioDelete,
+                    OpinionServicioList,
+                    OpinionServicioCreate,
                     index
                     )
 
@@ -27,4 +29,6 @@ urlpatterns = [
     path("contratar/create/", ContratarServicioCreate.as_view(),name="contratar_servicio_create"),
     path("contratar/update/<int:pk>/", ContratarServicioUpdate.as_view(),name="contratar_servicio_update"),
     path("contratar/delete/<int:pk>/", ContratarServicioDelete.as_view(),name="contratar_servicio_delete"),
+    path("ofrecer/opinion/create/", OpinionServicioCreate.as_view(),name="ofrecer_servicio_opinion_create"),
+    path("ofrecer/opiniones/<int:pk>/", OpinionServicioList.as_view(),name="ofrecer_servicio_opinion_list"),
 ]
