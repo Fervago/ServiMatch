@@ -1,17 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Eliminar</h1>
-    <p class="fs-5  fst-italic ">¿Confirma eliminar "{{ object.titulo }}"?</p>
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit">Confirmar</button>
-    </form>
-    <a href="{% url 'servicio:ofrecer_servicio_list' %}">Volver</a>
-</body>
-</html>
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+<div class="container" style="margin-top: 150px">
+    <p class="fs-5 fst-italic text-center">¿Confirma eliminar "{{ object.titulo }}"?</p>
+    <div class="text-center">
+        <form method="post" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Confirmar</button>
+        </form>
+        <a href="{% url 'servicio:ofrecer_servicio_list' %}" class="btn btn-secondary ms-2">Volver</a>
+    </div>
+</div>
+
+{% endblock content %}
+

@@ -1,15 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <button><a href="{% url 'servicio:contratar_servicio_create' %}">Contratar Servicio</a></button>
-    <button><a href="{% url 'servicio:ofrecer_servicio_create' %}">Ofrecer Servicio</a></button>
-    <button><a href="{% url 'servicio:contratar_servicio_list' %}">Propuestas Laborales</a></button>
-    <button><a href="{% url 'servicio:ofrecer_servicio_list' %}">Encontar Servicios</a></button>
-    <a href="{% url 'core:index' %}" class="btn btn-secondary ">Volver</a>
-</body>
-</html>
+{% extends 'core/base.html' %}
+{% block content %}
+    <div class="container d-flex justify-content-center align-items-center vh-100 mt-3">
+        <div class="card text-center p-5">
+            <h1 class="mb-4">¡Bienvenido!</h1>
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="{% url 'servicio:contratar_servicio_create' %}" class="btn btn-primary btn-lg btn-block mb-3">Contratar Servicio</a>
+                    <a href="{% url 'servicio:ofrecer_servicio_create' %}" class="btn btn-primary btn-lg btn-block mb-3">Ofrecer Servicio</a>
+                </div>
+                <div class="col-md-6">
+                    <a href="{% url 'servicio:contratar_servicio_list' %}" class="btn btn-primary btn-lg btn-block mb-3">Propuestas Laborales</a>
+                    <a href="{% url 'servicio:ofrecer_servicio_list' %}" class="btn btn-primary btn-lg btn-block mb-3">Encontrar Servicios</a>
+                </div>
+            </div>
+            <a href="{% url 'core:index' %}" class="btn btn-secondary btn-lg mt-4">Volver</a>
+        </div>
+    </div>
+{% endblock content %}
+

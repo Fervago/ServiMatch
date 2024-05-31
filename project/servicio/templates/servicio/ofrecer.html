@@ -1,27 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    {% if form.instance.pk %}
-        <h1>Editar Servicio</h1>
-    {% else %}
-        <h1>Ofrecer Servicio</h1>
-    {% endif %}
-    <table>
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center vh-100 mt-3">
+    <div>
+        {% if form.instance.pk %}
+            <h1>Editar Servicio</h1>
+        {% else %}
+            <h1>Ofrecer Servicio</h1>
+        {% endif %}
         <form method="post">
             {% csrf_token %}
-            {{ form.as_table }}
-            <button type="submit">Enviar</button>
+            <div class="mb-3">
+                <table>
+                    {{ form.as_table }}
+                </table> 
+            </div>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary">Enviar</button>
+                {% if form.instance.pk %}
+                    <a href="{% url 'servicio:ofrecer_servicio_list' %}" class="btn btn-secondary">Volver</a>
+                {% else %}
+                    <a href="{% url 'servicio:index' %}" class="btn btn-secondary">Volver</a>
+                {% endif %}
+            </div>
         </form>
-    </table>
-    {% if form.instance.pk %}
-        <a href="{% url 'servicio:ofrecer_servicio_list' %}" class="btn btn-secondary ">Volver</a>
-    {% else %}
-        <a href="{% url 'servicio:index' %}" class="btn btn-secondary ">Volver</a>
-    {% endif %}
-</body>
-</html>
+    </div>
+</div>
+{% endblock content %}
+
+
+    

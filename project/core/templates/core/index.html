@@ -1,13 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <button><a href="{% url 'core:login' %}">Iniciar Secion</a></button>
-    <button><a href="{% url 'core:register' %}">Registrarse</a></button>
-    <button><a href="{% url 'servicio:index' %}">Entrar</a></button>
-</body>
-</html>  
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+    {% include 'core/components/header.html' %}
+    <div class="page-section d-flex justify-content-center align-items-center mt-5" id="comenzar">
+        <div class="container">
+            <div class="row">
+                {% if user.is_authenticated %}
+                    <div class="row mt-3">
+                        <div class="col-md-6 offset-md-3">
+                            <div class="d-grid gap-2">
+                                <a href="{% url 'servicio:index' %}" class="btn btn-primary btn-lg btn-block">Entrar</a>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="col-md-6">
+                        <div class="d-grid gap-2">
+                            <a href="{% url 'core:login' %}" class="btn btn-primary btn-lg btn-block">Iniciar Sesión</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-grid gap-2">
+                            <a href="{% url 'core:register' %}" class="btn btn-primary btn-lg btn-block">Registrarse</a>
+                        </div>
+                    </div>
+                {% endif %}
+                
+            </div>
+            
+         </div>
+    </div>
+
+    {% include 'core/components/about.html' %}
+    
+    {% include 'core/components/footer.html' %}
+
+{% endblock content %}
+    
+ 

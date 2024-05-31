@@ -1,21 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <ul>
-        <li>Titulo: {{ object.titulo }}</li>
-        <li>Descripción: {{ object.descripcion }}</li>
-        <li>precio: {{ object.precio}}</li>
-        <li>Disponible Desde: {{ object.disponible_desde }}</li>
-        <li>Disponible Hasta: {{ object.disponible_hasta }}</li>
-        <li>Fecha de Publicacion: {{ object.fecha_publicacion }}</li>
-    </ul>
-    <div>
-        <a href="{% url 'servicio:ofrecer_servicio_list' %}">Volver</a>
-    </div>
-</body>
-</html>
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div style="overflow-y: auto; overflow-x: hidden; max-height: 80vh;">
+    <div class="mt-5">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-6" style="margin-top: 90px;">
+                <ul class="list-group">
+                    <li class="list-group-item">Titulo: {{ object.titulo }}</li>
+                    <li class="list-group-item">Descripción: {{ object.descripcion }}</li>
+                    <li class="list-group-item">Precio: {{ object.precio }}</li>
+                    <li class="list-group-item">Disponible Desde: {{ object.disponible_desde }}</li>
+                    <li class="list-group-item">Disponible Hasta: {{ object.disponible_hasta }}</li>
+                    <li class="list-group-item">Fecha de Publicacion: {{ object.fecha_publicacion }}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-3">
+            <div class="col-md-6 text-center">
+                <a href="{% url 'servicio:ofrecer_servicio_list' %}" class="btn btn-primary">Volver</a>
+            </div>
+        </div>
+    </div> 
+</div>
+{% endblock content %}
+
+
+
+
+
+    
