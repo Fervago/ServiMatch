@@ -1,24 +1,27 @@
 {% extends 'core/base.html' %}
 
 {% block content %}
-<div style="overflow-y: auto; overflow-x: hidden; max-height: 80vh;">
-    <div class="mt-5">
-        <div class="row justify-content-center align-items-center">
-            <div class="col-md-6" style="margin-top: 90px;">
-                <ul class="list-group">
-                    <li class="list-group-item">Titulo: {{ object.titulo }}</li>
-                    <li class="list-group-item">Descripción: {{ object.descripcion }}</li>
-                    <li class="list-group-item">Presupuesto Maximo: {{ object.presupuesto_maximo}}/li>
-                    <li class="list-group-item">Fecha de Solicitud: {{ object.fecha_solicitud }}</li>
-                    <li class="list-group-item">Fecha Limite: {{ object.fecha_limite }}</li>
-                </ul>
-            </div>
+<div class="container mt-5">
+    <div class="row justify-content-center align-items-center" style="margin-top: 150px">
+        <div class="col-md-6">
+            <ul class="list-group">
+                <li class="list-group-item">Titulo: {{ object.titulo }}</li>
+                <li class="list-group-item">Descripción: {{ object.descripcion }}</li>
+                <li class="list-group-item">Presupuesto Maximo: {{ object.presupuesto_maximo }}</li>
+                <li class="list-group-item">Fecha de Solicitud: {{ object.fecha_solicitud }}</li>
+                <li class="list-group-item">Fecha Limite: {{ object.fecha_limite }}</li>
+            </ul>
         </div>
-        <div class="row justify-content-center mt-3">
-            <div class="col-md-6 text-center">
-                <a href="{% url 'servicio:contratar_servicio_list' %}" class="btn btn-primary">Volver</a>
-            </div>
+        <div class="col-md-6 text-center">
+            {% if object.imagen %}
+                <img src="{{ object.imagen.url }}" alt="Imagen del servicio" class="img-fluid">
+            {% endif %}
         </div>
-    </div> 
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <a href="{% url 'servicio:contratar_servicio_list' %}" class="btn btn-secondary btn-lg mt-3">Volver</a>
+        </div>
+    </div>
 </div>
 {% endblock content %}

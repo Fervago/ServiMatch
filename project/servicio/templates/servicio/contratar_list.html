@@ -1,7 +1,7 @@
 {% extends 'core/base.html' %}
 
 {% block content %}
-<div style="overflow-y: auto; max-height: 80vh; padding: 20px;">
+<div style="overflow-y: auto; padding: 20px;">
     <h1 class="text-center">Propuestas Laborales</h1>
     <div class="container mt-5">
         <form action="{% url 'servicio:contratar_servicio_list' %}" method="get" class="input-group">
@@ -16,7 +16,6 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">{{ object.titulo }}</h5>
-                        <p class="card-text">Descripción: {{ object.descripcion }}</p>
                         <a href="{% url 'servicio:contratar_servicio_detail' object.id %}" class="btn btn-info btn-sm">Detalle</a>
                         <a href="{% url 'servicio:contratar_servicio_update' object.id %}" class="btn btn-info btn-sm">Cambiar</a>
                         <a href="{% url 'servicio:contratar_servicio_delete' object.id %}" class="btn btn-info btn-sm">Eliminar</a>
@@ -27,7 +26,7 @@
         </div>
     </div>
     <div class="text-center">
-        <a href="{% url 'servicio:index' %}" class="btn btn-secondary mt-3">Volver</a>
+        <a href="{% url 'servicio:index' %}" class="btn btn-secondary mb-4">Volver</a>
     </div>
 </div>
 {% endblock content %}

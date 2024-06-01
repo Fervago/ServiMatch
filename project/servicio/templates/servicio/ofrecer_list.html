@@ -1,7 +1,7 @@
 {% extends 'core/base.html' %}
 
 {% block content %}
-<div style="overflow-y: auto; max-height: 80vh;">
+<div style="overflow-y: auto;">
     <div class="container mt-5">
         <h1 class="text-center">Encontrar Servicios</h1>
         <form action="{% url 'servicio:ofrecer_servicio_list' %}" method="get" class="input-group mt-3">
@@ -14,7 +14,6 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">{{ object.titulo }}</h5>
-                        <p class="card-text">Descripción: {{ object.descripcion }}</p>
                         <a href="{% url 'servicio:ofrecer_servicio_detail' object.id %}" class="btn btn-info btn-sm">Mas informacion</a>
                         <a href="{% url 'servicio:ofrecer_servicio_update' object.id %}" class="btn btn-info btn-sm">Cambiar</a>
                         <a href="{% url 'servicio:ofrecer_servicio_delete' object.id %}" class="btn btn-info btn-sm">Eliminar</a>
@@ -24,7 +23,7 @@
             {% endfor %}
         </div>
         <div class="text-center">
-            <a href="{% url 'servicio:index' %}" class="btn btn-secondary mt-3">Volver</a>
+            <a href="{% url 'servicio:index' %}" class="btn btn-secondary mb-4">Volver</a>
         </div>
     </div>
 </div>

@@ -1,34 +1,38 @@
 {% extends 'core/base.html' %}
 
 {% block content %}
-<div style="overflow-y: auto; overflow-x: hidden; max-height: 80vh;">
-    <div class="mt-5">
-        <div class="row justify-content-center align-items-center">
-            <div class="col-md-6" style="margin-top: 90px;">
-                <ul class="list-group">
-                    <li class="list-group-item">Titulo: {{ object.titulo }}</li>
-                    <li class="list-group-item">Descripción: {{ object.descripcion }}</li>
-                    <li class="list-group-item">Precio: {{ object.precio }}</li>
-                    <li class="list-group-item">Disponible Desde: {{ object.disponible_desde }}</li>
-                    <li class="list-group-item">Disponible Hasta: {{ object.disponible_hasta }}</li>
-                    <li class="list-group-item">Fecha de Publicacion: {{ object.fecha_publicacion }}</li>
-                </ul>
-            </div>
+<div class="container mt-5">
+    <div class="row justify-content-center align-items-center" style="margin-top: 150px">
+        <div class="col-md-6">
+            <ul class="list-group">
+                <li class="list-group-item">Titulo: {{ object.titulo }}</li>
+                <li class="list-group-item">Descripción: {{ object.descripcion }}</li>
+                <li class="list-group-item">Precio: {{ object.precio }}</li>
+                <li class="list-group-item">Disponible Desde: {{ object.disponible_desde }}</li>
+                <li class="list-group-item">Disponible Hasta: {{ object.disponible_hasta }}</li>
+                <li class="list-group-item">Fecha de Publicación: {{ object.fecha_publicacion }}</li>
+            </ul>
         </div>
-        <div class="row justify-content-center mt-3">
-            <div class="col-md-6 text-center">
-                <a href="{% url 'servicio:ofrecer_servicio_opinion_create' %}" class="btn btn-primary">Opinar</a>
-            </div>
-            <div class="col-md-6 text-center">
-                <a href="{% url 'servicio:ofrecer_servicio_opinion_list' object.id %}" class="btn btn-primary">Ver Opiniones</a>
-            </div>
-            <div class="col-md-6 text-center">
-                <a href="{% url 'servicio:ofrecer_servicio_list' %}" class="btn btn-secondary">Volver</a>
-            </div>
+        <div class="col-md-6 text-center">
+            {% if object.imagen %}
+                <img src="{{ object.imagen.url }}" alt="Imagen del servicio" class="img-fluid">
+            {% endif %}
         </div>
-    </div> 
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <a href="{% url 'servicio:ofrecer_servicio_opinion_create' %}" class="btn btn-primary btn-lg d-block mb-3">Opinar</a>
+            <a href="{% url 'servicio:ofrecer_servicio_opinion_list' object.id %}" class="btn btn-primary btn-lg d-block mb-3">Ver Opiniones</a>
+            <a href="{% url 'servicio:ofrecer_servicio_list' %}" class="btn btn-secondary btn-lg d-block mb-3">Volver</a>
+        </div>
+    </div>      
 </div>
 {% endblock content %}
+
+
+
+
+
 
 
 

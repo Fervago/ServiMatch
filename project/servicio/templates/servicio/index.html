@@ -2,7 +2,7 @@
 {% block content %}
     <div class="container d-flex justify-content-center align-items-center vh-100 mt-3">
         <div class="card text-center p-5">
-            <h1 class="mb-4">¡Bienvenido!</h1>
+            <h1 class="mb-4">¡Bienvenido {{ user.username }}!</h1>
             <div class="row">
                 <div class="col-md-6">
                     <a href="{% url 'servicio:contratar_servicio_create' %}" class="btn btn-primary btn-lg btn-block mb-3">Contratar Servicio</a>
@@ -13,7 +13,7 @@
                     <a href="{% url 'servicio:ofrecer_servicio_list' %}" class="btn btn-primary btn-lg btn-block mb-3">Encontrar Servicios</a>
                 </div>
             </div>
-            <a href="{% url 'core:index' %}" class="btn btn-secondary btn-lg mt-4">Volver</a>
+            <a href="{% url 'core:index' %}" class="btn btn-secondary btn-lg mb-4">Volver</a>
         </div>
     </div>
 {% endblock content %}

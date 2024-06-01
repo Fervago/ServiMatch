@@ -10,7 +10,7 @@
             {% if user.is_authenticated %}
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="#comenzar">{{ user.username }}</a>
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="#comenzar">|| {{ user.username }} ||</a>
                     </li>
                     <li class="nav-item mx-0 mx-lg-1">
                         <a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'core:logout' %}">Cerrar Sesion</a>

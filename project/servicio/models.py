@@ -6,7 +6,8 @@ class Servicio(models.Model):
     titulo = models.CharField(max_length=200)
     descripcion = models.TextField()
     usuario = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
-
+    imagen = models.ImageField(upload_to="imagenes", null=True, blank=True)
+    
     def __str__(self) -> str:
         return self.titulo
     
@@ -18,7 +19,6 @@ class OfrecerServicio(Servicio):
     disponible_desde = models.DateField()
     disponible_hasta = models.DateField()
     fecha_publicacion = models.DateField(auto_now_add=True)
-    
     
 
 
