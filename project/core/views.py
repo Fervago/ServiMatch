@@ -19,7 +19,6 @@ def register(request: HttpRequest) -> HttpResponse:
         if form.is_valid():
             username = form.cleaned_data["username"]
             form.save()
-
             return render(request, "core/index.html", {"mensaje": f"Usuario '{username}' creado"})
     else:
         form = CustomUserCreationForm()

@@ -14,9 +14,12 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">{{ object.titulo }}</h5>
+                        <p>Creado por: {{ object.usuario.username }}</p>
                         <a href="{% url 'servicio:ofrecer_servicio_detail' object.id %}" class="btn btn-info btn-sm">Mas informacion</a>
+                        {% if object.usuario == request.user %}
                         <a href="{% url 'servicio:ofrecer_servicio_update' object.id %}" class="btn btn-info btn-sm">Cambiar</a>
                         <a href="{% url 'servicio:ofrecer_servicio_delete' object.id %}" class="btn btn-info btn-sm">Eliminar</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>

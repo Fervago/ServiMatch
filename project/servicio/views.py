@@ -26,6 +26,7 @@ class OfrecerServicioList(LoginRequiredMixin, ListView):
     model = OfrecerServicio
     template_name = "servicio/ofrecer_list.html"
 
+    # Filtrar y buscar objetos
     def get_queryset(self) -> QuerySet[Any]:
         queryset = super().get_queryset()
         busqueda = self.request.GET.get("busqueda")
@@ -39,10 +40,6 @@ class OfrecerServicioDetail(LoginRequiredMixin, DetailView):
     model = OfrecerServicio
     template_name = "servicio/ofrecer_detail.html"
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['servicio'] = self.object # type: ignore
-        return context
 
 class OfrecerServicioCreate(LoginRequiredMixin, CreateView):
     model = OfrecerServicio
@@ -57,6 +54,7 @@ class OfrecerServicioUpdate(LoginRequiredMixin, UpdateView):
     template_name = "servicio/ofrecer.html"
     success_url = reverse_lazy('servicio:ofrecer_servicio_list')
 
+    # verifica permisos de edición.
     def dispatch(self, request, *args, **kwargs):
         obj = self.get_object()
         if not obj.usuario == request.user: # type: ignore
@@ -97,10 +95,6 @@ class ContratarServicioDetail(LoginRequiredMixin, DetailView):
     model = ContratarServicio
     template_name = "servicio/contratar_detail.html"
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['servicio'] = self.object # type: ignore
-        return context
 
 class ContratarServicioCreate(LoginRequiredMixin, CreateView):
     model = ContratarServicio
@@ -140,6 +134,7 @@ class OpinionServicioList(LoginRequiredMixin, ListView):
     model = Opinion
     template_name = "servicio/opiniones.html"
 
+    # Filtra opiniones por servicio.
     def get_queryset(self):
         servicio_pk = self.kwargs.get('pk')
         servicio = get_object_or_404(OfrecerServicio, pk=servicio_pk)
