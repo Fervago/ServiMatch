@@ -18,3 +18,7 @@
 ## Mala practica
 
     No estoy seguro si es una mala practica pero deberia haber utilizado un filtro en vez de sobrescribir la funcion dispatch para verifica los permisos de edición.
+
+## Link al Video
+
+    https://www.youtube.com/watch?v=G8OjQYLpYtk&ab_channel=FerVago
