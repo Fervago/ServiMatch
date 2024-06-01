@@ -7,7 +7,7 @@
             <ul class="list-group">
                 <li class="list-group-item">Titulo: {{ object.titulo }}</li>
                 <li class="list-group-item">Descripción: {{ object.descripcion }}</li>
-                <li class="list-group-item">Precio: {{ object.precio }}</li>
+                <li class="list-group-item">Precio(Dolares): ${{ object.precio }}</li>
                 <li class="list-group-item">Disponible Desde: {{ object.disponible_desde }}</li>
                 <li class="list-group-item">Disponible Hasta: {{ object.disponible_hasta }}</li>
                 <li class="list-group-item">Fecha de Publicación: {{ object.fecha_publicacion }}</li>
@@ -15,7 +15,7 @@
         </div>
         <div class="col-md-6 text-center">
             {% if object.imagen %}
-                <img src="{{ object.imagen.url }}" alt="Imagen del servicio" class="img-fluid">
+                <img src="{{ object.imagen.url }}" alt="..." class="img-fluid">
             {% endif %}
         </div>
     </div>

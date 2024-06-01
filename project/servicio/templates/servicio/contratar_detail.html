@@ -7,20 +7,20 @@
             <ul class="list-group">
                 <li class="list-group-item">Titulo: {{ object.titulo }}</li>
                 <li class="list-group-item">Descripción: {{ object.descripcion }}</li>
-                <li class="list-group-item">Presupuesto Maximo: {{ object.presupuesto_maximo }}</li>
+                <li class="list-group-item">Presupuesto Maximo(Dolares): ${{ object.presupuesto_maximo }}</li>
                 <li class="list-group-item">Fecha de Solicitud: {{ object.fecha_solicitud }}</li>
                 <li class="list-group-item">Fecha Limite: {{ object.fecha_limite }}</li>
             </ul>
         </div>
         <div class="col-md-6 text-center">
             {% if object.imagen %}
-                <img src="{{ object.imagen.url }}" alt="Imagen del servicio" class="img-fluid">
+                <img src="{{ object.imagen.url }}" alt="..." class="img-fluid">
             {% endif %}
         </div>
     </div>
     <div class="row mt-4">
         <div class="col-md-6">
-            <a href="{% url 'servicio:contratar_servicio_list' %}" class="btn btn-secondary btn-lg mt-3">Volver</a>
+            <a href="{% url 'servicio:contratar_servicio_list' %}" class="btn btn-secondary btn-lg mb-3">Volver</a>
         </div>
     </div>
 </div>

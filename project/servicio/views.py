@@ -39,6 +39,11 @@ class OfrecerServicioDetail(LoginRequiredMixin, DetailView):
     model = OfrecerServicio
     template_name = "servicio/ofrecer_detail.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['servicio'] = self.object # type: ignore
+        return context
+
 class OfrecerServicioCreate(LoginRequiredMixin, CreateView):
     model = OfrecerServicio
     form_class = OfrecerServicioForm
@@ -92,6 +97,11 @@ class ContratarServicioDetail(LoginRequiredMixin, DetailView):
     model = ContratarServicio
     template_name = "servicio/contratar_detail.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['servicio'] = self.object # type: ignore
+        return context
+
 class ContratarServicioCreate(LoginRequiredMixin, CreateView):
     model = ContratarServicio
     form_class = ContratarServicioForm
@@ -111,6 +121,7 @@ class ContratarServicioUpdate(LoginRequiredMixin, UpdateView):
             messages.error(request, "No tienes permiso para editar este servicio.")
             return redirect('servicio:contratar_servicio_detail', pk=obj.pk)
         return super().dispatch(request, *args, **kwargs)
+    
 
 class ContratarServicioDelete(LoginRequiredMixin, DeleteView):
     model = ContratarServicio
@@ -142,3 +153,4 @@ class OpinionServicioCreate(LoginRequiredMixin, CreateView):
     form_class = OpinionForm
     template_name = "servicio/opinion_create.html"
     success_url = reverse_lazy('servicio:ofrecer_servicio_list')
+
