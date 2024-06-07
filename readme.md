@@ -12,7 +12,7 @@
 
 ## Problemas conocidos
 
-    Los usuarios no pueden interactuar entre si
+    Poca interaccion entre usuarios
     A la hora de cargar un servicio o una opinion, que la pagina detecte directamente quien es el usuario que intenta cargar los datos.
 
 ## Mala practica
